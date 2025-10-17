@@ -43,6 +43,7 @@ CuraConnect is building the next generation of Electronic Medical Records (EMR) 
 
 **Pattern**: Event-Driven Modular Monolith (with zero-code microservices extraction path)
 
+```
 ┌─────────────────────────────────────────────────────────────┐
 │                     Client Applications                      │
 │  Next.js Web App  │  React Native Mobile  │  Public API     │
@@ -66,7 +67,7 @@ CuraConnect is building the next generation of Electronic Medical Records (EMR) 
    │Notification│      │ Extraction  │    │Future Workers│
    │  Worker    │      │   Worker    │    │              │
    └─────────────┘     └─────────────┘    └──────────────┘
-
+```
 **Key Design Decisions**:
 - **Nx Monorepo** — Fast MVP development with shared libraries
 - **Event-Driven** — All inter-module communication via EventBridge (enables future microservices)
@@ -99,8 +100,28 @@ CuraConnect is building the next generation of Electronic Medical Records (EMR) 
 
 ## 📦 Repository Structure
 
-curaconnect-platform/ # Main application monorepo ├── apps/ │ ├── api/ # NestJS API server │ ├── web/ # Next.js web application │ ├── mobile/ # React Native mobile app │ ├── notification.worker/ # Background notification worker │ └── extraction.worker/ # AI extraction worker │ ├── libs/ │ ├── database/ # PostgreSQL + DynamoDB access │ ├── eventbridge/ # Event publishing/consuming │ ├── auth/ # Authentication & RBAC │ ├── logging/ # Structured logging & audit │ ├── notifications/ # Multi-channel delivery │ └── ui/ # Shared UI components platform-build-docs/ # Comprehensive documentation ├── CuraConnect.md # Feature specifications ├── CuraConnect_Architecture.md # System design └── CuraConnect_TechSpec.md # Technical implementation details
+```
+curaconnect-platform/           # Main application monorepo
+├── apps/
+│   ├── api/                    # NestJS API server
+│   ├── web/                    # Next.js web application
+│   ├── mobile/                 # React Native mobile app
+│   ├── notification.worker/    # Background notification worker
+│   └── extraction.worker/      # AI extraction worker
+│
+├── libs/
+│   ├── database/               # PostgreSQL + DynamoDB access
+│   ├── eventbridge/            # Event publishing/consuming
+│   ├── auth/                   # Authentication & RBAC
+│   ├── logging/                # Structured logging & audit
+│   ├── notifications/          # Multi-channel delivery
+│   └── ui/                     # Shared UI components
 
+platform-build-docs/            # Comprehensive documentation
+├── CuraConnect.md              # Feature specifications
+├── CuraConnect_Architecture.md # System design
+└── CuraConnect_TechSpec.md     # Technical implementation details
+```
 ---
 
 ## 🚀 Key Differentiators
