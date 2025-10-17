@@ -43,7 +43,29 @@ CuraConnect is building the next generation of Electronic Medical Records (EMR) 
 
 **Pattern**: Event-Driven Modular Monolith (with zero-code microservices extraction path)
 
-┌─────────────────────────────────────────────────────────────┐ │ Client Applications │ │ Next.js Web App │ React Native Mobile │ Public API │ └────────────┬──────────────────┬───────────────────┬─────────┘ │ │ │ ┌────▼──────────────────▼───────────────────▼────┐ │ NestJS API Server (GraphQL + REST) │ │ ┌──────────┬──────────┬──────────┬─────────┐ │ │ │ Patient │ Clinical │ Orders │ Admin │ │ │ │ Module │ Module │ Module │ Module │ │ │ └──────────┴──────────┴──────────┴─────────┘ │ └────────────────────┬───────────────────────────┘ │ ┌────────▼─────────┐ │ AWS EventBridge │ ◄─── Event-Driven Communication └────────┬─────────┘ │ ┌────────────────────┼────────────────────┐ │ │ │ ┌────▼────┐ ┌──────▼──────┐ ┌───────▼────────┐ │Notification│ │ Extraction │ │Future Workers│ │ Worker │ │ Worker │ │ │ └─────────────┘ └─────────────┘ └──────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                     Client Applications                      │
+│  Next.js Web App  │  React Native Mobile  │  Public API     │
+└────────────┬──────────────────┬───────────────────┬─────────┘
+             │                  │                   │
+        ┌────▼──────────────────▼───────────────────▼────┐
+        │         NestJS API Server (GraphQL + REST)     │
+        │  ┌──────────┬──────────┬──────────┬─────────┐ │
+        │  │ Patient  │ Clinical │  Orders  │  Admin  │ │
+        │  │  Module  │  Module  │  Module  │ Module  │ │
+        │  └──────────┴──────────┴──────────┴─────────┘ │
+        └────────────────────┬───────────────────────────┘
+                             │
+                    ┌────────▼─────────┐
+                    │  AWS EventBridge │ ◄─── Event-Driven Communication
+                    └────────┬─────────┘
+                             │
+        ┌────────────────────┼────────────────────┐
+        │                    │                    │
+   ┌────▼────┐        ┌──────▼──────┐    ┌───────▼────────┐
+   │Notification│      │ Extraction  │    │Future Workers│
+   │  Worker    │      │   Worker    │    │              │
+   └─────────────┘     └─────────────┘    └──────────────┘
 
 **Key Design Decisions**:
 - **Nx Monorepo** — Fast MVP development with shared libraries
